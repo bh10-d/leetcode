@@ -1,0 +1,20 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 1ms, Memory: 5.92MB
+-- Sử dụng hashmap để duyệt mảng với độ phức tạp về thời gian là O(n)
+-- khởi tạo hashmap[v] = k do đó mỗi lần loop qua sẽ kèm theo đó check hashmap
+-- xem giá trị đã có trong hashmap chưa nếu có rồi trả về idx của phần tử đó
+-- trong hashmap kèm theo đó là index của mảng đang loop hiện tại
+func twoSum(nums []int, target int) []int {
+    m := make(map[int]int)
+
+    for i, v := range nums {
+        complement := target - v;
+        if idx, ok := m[complement]; ok {
+            return []int{idx, i};
+        }
+        m[v] = i;
+    }
+
+    return nil;
+}

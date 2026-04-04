@@ -1,0 +1,30 @@
+Language: Golang
+
+Phương pháp giải 1: Runtime: 42ms, Memory: 14.8MB
+-- Sử dụng hashmap để duyệt mảng với độ phức tạp về thời gian là O(n)
+func containsDuplicate(nums []int) bool {
+    m := make(map[int]int);
+
+    for i, v := range nums {
+        if _, ok := m[v]; ok {
+            return true;
+        }
+        m[v] = i;
+    }
+    return false
+}
+
+
+Phương pháp giải 2: Runtime: 14ms, Memory: 12.93MB
+-- Sử dụng struct trong hashmap để giảm memory và bỏ value của hashmap để tăng tốc độ
+func containsDuplicate(nums []int) bool {
+    m := make(map[int]struct{});
+
+    for _, v := range nums {
+        if _, ok := m[v]; ok {
+            return true;
+        }
+        m[v] = struct{}{};
+    }
+    return false
+}

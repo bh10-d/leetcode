@@ -1,0 +1,30 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.64MB
+-- tạo mảng với 26 ký tự và chuẩn hóa index của char bắt đầu từ a là 97 về 0 bằng cách
+-- char - 'a'
+-- Sau đó chạy 2 vòng lặp với vòng lặp đầu tiên đếm số lần xuất hiện của ký tự và ++
+-- Vòng lặp thứ 2 thì chạy với việc -- nếu kết quả < 0 thì return false
+func isAnagram(s string, t string) bool {
+    if len(s) != len(t) {
+        return false;
+    }
+
+    var count [26]int;
+
+    for i:=0; i < len(s); i++ {
+        idx := s[i] - 'a';
+        count[idx]++;
+    }
+
+    for i:=0; i < len(t); i++ {
+        idx := t[i] - 'a';
+        count[idx]--;
+
+        if count[idx] < 0 {
+            return false;
+        }
+    }
+
+    return true;
+}

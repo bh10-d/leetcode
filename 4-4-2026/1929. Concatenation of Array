@@ -1,0 +1,14 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 7.65MB
+-- Sử dụng việc tạo mới một biến chứa các giá trị của mảng giống với đề
+-- và dùng toán tử variadic để unpack rải các phần tử trong slice ra và merge lại
+-- thành một mảng mới
+func getConcatenation(nums []int) []int {
+    concate := make([]int, len(nums));
+    
+    copy(concate, nums);
+
+    combined := append(nums, concate...);
+    return combined;
+}
