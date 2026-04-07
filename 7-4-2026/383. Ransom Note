@@ -1,0 +1,23 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 5.8MB
+
+func canConstruct(ransomNote string, magazine string) bool {
+    var count[26]int;
+
+    for i := 0; i < len(magazine); i++{
+        idx :=  magazine[i] - 'a';
+        count[idx]++;
+    }
+
+    for j := 0; j < len(ransomNote); j++ {
+        idx := ransomNote[j] - 'a';
+        count[idx]--;
+
+        if count[idx] < 0 {
+            return false;
+        }
+    }
+
+    return true;
+}

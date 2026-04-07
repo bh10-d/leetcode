@@ -1,0 +1,20 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 3.9MB
+
+func plusOne(digits []int) []int {
+    i := len(digits) - 1;
+
+    for i >= 0 {
+        digits[i]++;
+
+        if digits[i] < 10 {
+            return digits;
+        }
+
+        digits[i] = 0;
+        i--
+    }
+
+    return append([]int{1}, digits...);
+}

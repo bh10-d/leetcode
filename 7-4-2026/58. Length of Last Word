@@ -1,0 +1,11 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.14MB
+
+func lengthOfLastWord(s string) int {
+    detach := strings.Fields(s);
+
+    last := detach[len(detach) - 1];
+
+    return len(last);
+}
