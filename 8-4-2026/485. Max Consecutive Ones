@@ -1,0 +1,21 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 11.53MB
+
+func findMaxConsecutiveOnes(nums []int) int {
+    maxCount := 0;
+    current := 0;
+
+    for _, v := range nums {
+        if v == 1{
+            current++;
+            if current > maxCount {
+                maxCount = current;
+            }
+        }else {
+            current = 0;
+        }
+    }
+
+    return maxCount;
+}

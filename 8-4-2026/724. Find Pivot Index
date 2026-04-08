@@ -1,0 +1,29 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 8.4MB
+
+-- [left] + nums[i] + [right] = [total]
+-- => [right] = [total] - [left] - nums[i]
+
+-- pivot => [left] = [right]
+-- => [left] = [total] - [left] - nums[i]
+-- 2 * left + nums[i] == total
+
+func pivotIndex(nums []int) int {
+    total := 0;
+
+    for _, v := range nums {
+        total+=v;
+    }
+
+    left := 0;
+
+    for i, v := range nums {
+        if left*2+v == total {
+            return i;
+        }
+        left+=v;
+    }
+
+    return -1;
+}
