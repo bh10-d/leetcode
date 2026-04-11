@@ -1,0 +1,27 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.08MB
+
+func findTheDifference(s string, t string) byte {
+    
+    var count [26]int;
+
+    for i := 0; i < len(t); i++ {
+        c := t[i] - 'a';
+        count[c]++ 
+    }
+
+    for j := 0; j < len(s); j ++ {
+        c := s[j] - 'a';
+        count[c]--;
+    }
+
+    for i, v := range count {
+        if v == 1 {
+            return byte(i + 'a');
+        }
+    }
+
+    return byte(0)
+
+}

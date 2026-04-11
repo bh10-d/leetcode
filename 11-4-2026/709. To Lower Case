@@ -1,0 +1,7 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 3.84MB
+
+func toLowerCase(s string) string {
+    return strings.ToLower(s);
+}

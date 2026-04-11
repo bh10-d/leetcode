@@ -1,0 +1,20 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 31ms, Memory: 8.85MB
+
+func distributeCandies(candyType []int) int {
+    set := make(map[int]bool);
+
+    for i:=0;i<len(candyType);i++{
+        set[candyType[i]] = true;
+    }
+
+    uniqueTypes := len(set);
+    maxEat := len(candyType) / 2;
+
+    if uniqueTypes < maxEat {
+        return uniqueTypes;
+    }
+
+    return maxEat;
+}

@@ -1,0 +1,34 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 5.26MB
+
+
+func duplicateZeros(arr []int)  {
+    n := len(arr);
+    zeros := 0;
+
+    for i := 0; i < n; i++ {
+        if arr[i] == 0 {
+            zeros++;
+        }
+    }
+
+    i := n-1;
+    j := n + zeros - 1
+
+    for i >= 0 {
+        if j < n {
+            arr[j] = arr[i]
+        }
+
+        if arr[i] == 0 {
+            j--
+            if j <n {
+                arr[j] = 0
+            }
+        }
+
+        i--;
+        j--;
+    }
+}
