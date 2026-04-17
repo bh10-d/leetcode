@@ -1,0 +1,28 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.2MB
+
+func sumOfUnique(nums []int) int {
+    m := make(map[int]int);
+
+    for _, v := range nums {
+        m[v]++;
+    }
+
+    sum := 0
+
+    for _, v := range nums {
+        if m[v] == 1 {
+            sum+=v;
+        }
+
+        if m[v] == len(nums) && m[v] > 1 {
+            return 0
+        } 
+        if len(nums) == 1 {
+            return v
+        }
+    }
+
+    return sum
+}

@@ -1,0 +1,29 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 3.9MB
+
+import "strconv"
+
+func thousandSeparator(n int) string {
+    s := strconv.Itoa(n);
+
+    if len(s) <= 3 {
+        return s;
+    }
+
+    res := ""
+    count := 0;
+
+    for i := len(s) - 1; i >= 0; i-- {
+        res = string(s[i]) + res;
+
+        count++;
+
+        if count == 3 && i != 0 {
+            res = "." + res;
+            count = 0;
+        }
+    }
+
+    return res;
+}

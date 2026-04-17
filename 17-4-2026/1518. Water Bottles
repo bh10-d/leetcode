@@ -1,0 +1,16 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 3.8MB
+
+func numWaterBottles(numBottles int, numExchange int) int {
+    total := numBottles;
+    empty := numBottles;
+
+    for empty >= numExchange {
+        newBottles := empty / numExchange;
+        total += newBottles
+        empty = newBottles + (empty % numExchange)
+    }
+
+    return total
+}

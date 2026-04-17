@@ -1,0 +1,33 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 12.4MB
+
+func lemonadeChange(bills []int) bool {
+    m := map[int]int{
+        5: 0,
+        10: 0,
+        20: 0,
+    }
+
+    for _, v := range bills {
+        m[v]++;
+
+        if v == 10 {
+            if m[5] == 0 {
+                return false
+            }
+            m[5]--
+        }
+        if v == 20 {
+            if m[10] > 0 && m[5] > 0 {
+                m[10]--
+                m[5]--
+            }else if m[5] >= 3 {
+                m[5] -= 3
+            }else {
+                return false
+            }
+        }
+    }
+    return true
+}

@@ -1,0 +1,17 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.6MB
+
+import "strconv"
+func findNumbers(nums []int) int {
+    count := 0;
+
+    for _, v := range nums {
+        s := strconv.Itoa(v)
+        if len(s) %2 == 0 {
+            count++
+        }
+    }
+
+    return count;
+}
