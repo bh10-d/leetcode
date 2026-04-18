@@ -1,0 +1,23 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 5.4MB
+
+func mostWordsFound(sentences []string) int {
+    maxWords := 0
+
+    for _, s := range sentences {
+        count := 1
+
+        for i := 0; i < len(s); i++ {
+            if s[i] == ' ' {
+                count++
+            }
+        }
+
+        if count > maxWords {
+            maxWords = count
+        }
+    }
+
+    return maxWords
+}

@@ -1,0 +1,24 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.4MB
+
+func targetIndices(nums []int, target int) []int {
+    countLess := 0
+    countEqual := 0
+
+    for _, num := range nums {
+        if num < target {
+            countLess++
+        } else if num == target {
+            countEqual++
+        }
+    }
+
+    res := []int{}
+
+    for i := 0; i < countEqual; i++ {
+        res = append(res, countLess+i)
+    }
+
+    return res
+}

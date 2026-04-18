@@ -1,0 +1,14 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4MB
+
+func replaceDigits(s string) string {
+    arr := []byte(s)
+
+    for i:= 1; i < len(arr); i+=2 {
+        num := arr[i] - '0'
+        arr[i] = arr[i-1] + num
+    }
+
+    return string(arr)
+}

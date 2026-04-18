@@ -1,0 +1,51 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 8ms, Memory: 9.29MB
+
+import (
+    "strings"
+    "unicode"
+)
+
+func mostCommonWord(paragraph string, banned []string) string {
+    banSet := map[string]bool{}
+    for _, b := range banned {
+        banSet[b] = true;
+    }
+
+    paragraph = strings.ToLower(paragraph)
+
+    cleaned := ""
+    for _, c := range paragraph {
+        if unicode.IsLetter(c) {
+            cleaned += string(c);
+        } else {
+            cleaned += " ";
+        }
+    }
+
+    words := strings.Split(cleaned, " ");
+
+    count := map[string]int{};
+    maxCount := 0;
+    result := "";
+
+    for _, w := range words {
+        if w == "" {
+            continue;
+        }
+
+        if banSet[w] {
+            continue;
+        }
+
+        count[w]++;
+
+        if count[w] > maxCount {
+            maxCount = count[w];
+            result = w;
+        }
+    }
+
+    return result;
+}

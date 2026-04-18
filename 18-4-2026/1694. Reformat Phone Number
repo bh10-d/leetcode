@@ -1,0 +1,30 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.36MB
+
+func reformatNumber(number string) string {
+    digits := ""
+    for i := 0; i < len(number); i++ {
+        if number[i] >= '0' && number[i] <= '9' {
+            digits += string(number[i])
+        }
+    }
+
+    res := []string{}
+    i := 0
+    n := len(digits)
+
+    for n-i > 4 {
+        res = append(res, digits[i:i+3])
+        i += 3
+    }
+
+    if n-i == 4 {
+        res = append(res, digits[i:i+2])
+        res = append(res, digits[i+2:i+4])
+    } else {
+        res = append(res, digits[i:])
+    }
+
+    return strings.Join(res, "-")
+}

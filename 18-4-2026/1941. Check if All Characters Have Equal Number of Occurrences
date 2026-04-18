@@ -1,0 +1,22 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4.3MB
+
+func areOccurrencesEqual(s string) bool {
+    m := make(map[byte]int);
+
+    for i := 0; i < len(s); i++ {
+        m[s[i]]++
+    }
+
+    var freq int
+
+    for _, v := range m {
+        if freq == 0 {
+            freq = v
+        } else if v != freq {
+            return false
+        }
+    } 
+    return true
+}

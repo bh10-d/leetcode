@@ -1,0 +1,18 @@
+Language: Golang
+
+Phương pháp giải: Runtime: 0ms, Memory: 4MB
+
+func largestAltitude(gain []int) int {
+    current := 0
+    maxAt := 0
+
+    for i := 0; i < len(gain); i++ {
+        current += gain[i]
+
+        if current > maxAt {
+            maxAt = current
+        }
+    }
+
+    return maxAt
+}
