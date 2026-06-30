@@ -1,0 +1,12 @@
+func prefixCount(words []string, pref string) int {
+    count := 0
+    for _, v := range words {
+        if len(pref) <= len(v) {
+            leng := len(pref)
+            if pref == v[0:leng] {
+                count++
+            }
+        }
+    }
+    return count
+}

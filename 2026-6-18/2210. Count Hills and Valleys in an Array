@@ -1,0 +1,22 @@
+func countHillValley(nums []int) int {
+    uniqueNums := []int{nums[0]}
+    count := 0
+    // nén mảng để loại bỏ các phần tử trùng liên tiếp nhau ví dụ 2 1 1 1 3 thành 2 1 3
+    for i := 1; i < len(nums); i++ {
+        if nums[i] != nums[i-1] {
+            uniqueNums = append(uniqueNums, nums[i])
+        }
+    }
+
+    // sử dụng mảng đã nén sau đó chạy vòng lặp chạy từ phần tử với index 1 đến index n-1 vì đề bài cần xác định là cần 2 nốt liền kề nhau để 
+    // tạo thành 1 đồi hoặc thung lũng
+    for i := 1; i < len(uniqueNums)-1; i++ {
+        if uniqueNums[i] > uniqueNums[i-1] && uniqueNums[i] > uniqueNums[i+1] {
+            count++
+        }else if uniqueNums[i] < uniqueNums[i-1] && uniqueNums[i] < uniqueNums[i+1] {
+            count++
+        }
+    }
+
+    return count
+}

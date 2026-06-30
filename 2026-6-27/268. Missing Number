@@ -1,0 +1,15 @@
+func missingNumber(nums []int) int {
+    n := len(nums)
+    
+    // 1. Tính tổng lý thuyết từ 0 đến n
+    expectedSum := n * (n + 1) / 2
+    
+    // 2. Tính tổng thực tế các số trong mảng
+    actualSum := 0
+    for _, num := range nums {
+        actualSum += num
+    }
+    
+    // 3. Hiệu số là số bị thiếu
+    return expectedSum - actualSum
+}

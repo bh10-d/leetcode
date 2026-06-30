@@ -1,0 +1,14 @@
+func merge(nums1 []int, m int, nums2 []int, n int)  {
+    
+    idx2 := 0
+
+    for j := 0; j < len(nums1); j++ {
+        if idx2 < len(nums2) {
+            if nums1[j] == 0 {
+                nums1[j] = nums2[idx2]
+                idx2++
+            }
+        }
+    }
+    slices.Sort(nums1)
+}

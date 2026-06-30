@@ -1,0 +1,25 @@
+func isThree(n int) bool {
+    // Tìm căn bậc hai của n
+    root := int(math.Sqrt(float64(n)))
+    
+    // Nếu không phải số chính phương thì loại luôn
+    if root*root != n {
+        return false
+    }
+    
+    // Kiểm tra xem root có phải số nguyên tố không
+    return isPrime(root)
+}
+
+// Hàm phụ check số nguyên tố cơ bản
+func isPrime(x int) bool {
+    if x < 2 {
+        return false
+    }
+    for i := 2; i*i <= x; i++ {
+        if x%i == 0 {
+            return false
+        }
+    }
+    return true
+}

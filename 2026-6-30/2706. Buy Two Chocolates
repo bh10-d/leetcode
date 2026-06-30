@@ -1,0 +1,23 @@
+func buyChoco(prices []int, money int) int {
+    // Khởi tạo 2 giá trị nhỏ nhất với số lớn tối đa
+    min1 := 101
+    min2 := 101
+
+    // Duyệt qua mảng đúng 1 lần để tìm 2 viên rẻ nhất
+    for _, p := range prices {
+        if p < min1 {
+            min2 = min1 // Cập nhật số rẻ nhì cũ
+            min1 = p    // Cập nhật số rẻ nhất mới
+        } else if p < min2 {
+            min2 = p    // Cập nhật số rẻ nhì
+        }
+    }
+
+    totalCost := min1 + min2
+
+    // Nếu đủ tiền thì mua và thối lại tiền thừa, không đủ thì giữ nguyên tiền
+    if totalCost <= money {
+        return money - totalCost
+    }
+    return money
+}

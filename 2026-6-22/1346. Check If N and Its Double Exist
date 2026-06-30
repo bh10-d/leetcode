@@ -1,0 +1,13 @@
+func checkIfExist(arr []int) bool {
+    m := make(map[int]bool)
+
+    for _, v := range arr {
+        // kiểm tra trong quá khứ xem thử là đã gặp số nhân đôi hoặc chia 1 nửa chưa
+        if m[v*2] || (v % 2 == 0 && m[v/2]) {
+            return true
+        }
+        // chưa thì thêm vào map
+        m[v] = true
+    }
+    return false
+}

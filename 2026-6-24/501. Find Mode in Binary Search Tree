@@ -1,0 +1,46 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func findMode(root *TreeNode) []int {
+    maxCount := 0
+    currentCount := 0
+
+    var prev *TreeNode = nil
+
+    var res []int
+
+
+    traverse(root, &prev, &res, &currentCount, &maxCount)
+
+    return res
+}
+
+func traverse(node *TreeNode, prev **TreeNode, res *[]int, currentCount *int, maxCount *int) {
+    if node == nil {
+        return
+    }
+
+    traverse(node.Left, prev, res, currentCount, maxCount)
+
+    if *prev != nil && node.Val == (*prev).Val {
+        *currentCount++
+    }else {
+        *currentCount = 1
+    }
+
+    if *currentCount > *maxCount {
+        *maxCount = *currentCount
+        *res = []int{node.Val}
+    }else if *currentCount == *maxCount{
+        *res = append(*res, node.Val)
+    }
+
+    *prev = node
+
+    traverse(node.Right, prev, res, currentCount, maxCount)
+}

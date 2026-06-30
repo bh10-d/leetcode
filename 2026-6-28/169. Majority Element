@@ -1,0 +1,20 @@
+func majorityElement(nums []int) int {
+    candidate := 0
+    count := 0
+
+    for _, num := range nums {
+        // Nếu quân số về 0, bầu số hiện tại làm Leader mới
+        if count == 0 {
+            candidate = num
+        }
+        
+        // Nếu cùng phe thì tăng quân, khác phe thì trừ 1 quân
+        if num == candidate {
+            count++
+        } else {
+            count--
+        }
+    }
+
+    return candidate
+}

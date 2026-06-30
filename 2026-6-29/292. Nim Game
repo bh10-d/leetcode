@@ -1,0 +1,4 @@
+func canWinNim(n int) bool {
+    // chỉ thắng nếu n KHÔNG chia hết cho 4
+    return n%4 != 0
+}

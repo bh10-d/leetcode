@@ -1,0 +1,17 @@
+func checkString(s string) bool {
+    seenB := false
+    for i := 0; i < len(s); i++ {
+        if s[i] == 'b' {
+            seenB = true
+        }
+        if s[i] == 'a' {
+            if seenB {
+                return false
+            }
+        }
+    }
+    return true
+}
+
+// lặp qua mảng và đánh cờ cho ký tự b nếu như loop đến a mà check cờ seenB
+// true thì return về false vì 'ba' sẽ sai theo đề bài

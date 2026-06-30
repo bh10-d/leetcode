@@ -1,0 +1,31 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func maxDepth(root *TreeNode) int {
+    max := 0
+
+    traverse(root, 1, &max)
+
+    return max
+}
+
+func traverse(node *TreeNode, deep int, max *int) {
+    if node == nil {
+        return
+    }
+
+    // khởi tạo với deep là 1 vì cây sẽ có độ cao ít nhất là 1 và max được khỏi tạo là 0
+    // khi mà deep lớn hơn max thì cập nhật lại max
+    if deep > *max {
+        *max = deep
+    }
+
+    // mỗi lần đi sâu xuống thì tăng deep lên 1
+    traverse(node.Left, deep + 1, max)
+    traverse(node.Right, deep + 1, max)
+}

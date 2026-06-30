@@ -1,0 +1,22 @@
+func isUgly(n int) bool {
+    // Trạm gác: Số <= 0 không phải là Ugly Number
+    if n <= 0 {
+        return false
+    }
+
+    // Chia kiệt quệ cho 2
+    for n%2 == 0 {
+        n /= 2
+    }
+    // Chia kiệt quệ cho 3
+    for n%3 == 0 {
+        n /= 3
+    }
+    // Chia kiệt quệ cho 5
+    for n%5 == 0 {
+        n /= 5
+    }
+
+    // Nếu cuối cùng n về được bằng 1 thì đúng, ngược lại là sai
+    return n == 1
+}

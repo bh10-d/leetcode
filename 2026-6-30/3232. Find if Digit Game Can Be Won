@@ -1,0 +1,16 @@
+func canAliceWin(nums []int) bool {
+    singleDigitSum := 0
+    doubleDigitSum := 0
+
+    // Duyệt qua mảng và phân loại số để cộng dồn
+    for _, num := range nums {
+        if num < 10 {
+            singleDigitSum += num
+        } else {
+            doubleDigitSum += num
+        }
+    }
+
+    // Alice thắng nếu tổng hai nhóm không bằng nhau
+    return singleDigitSum != doubleDigitSum
+}

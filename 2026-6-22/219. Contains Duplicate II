@@ -1,0 +1,13 @@
+func containsNearbyDuplicate(nums []int, k int) bool {
+    indexMap := make(map[int]int)
+
+    for i, v := range nums {
+        if prevIndex, exists := indexMap[v]; exists {
+            if i - prevIndex <= k {
+                return true
+            }
+        }
+        indexMap[v] = i
+    }
+    return false
+}

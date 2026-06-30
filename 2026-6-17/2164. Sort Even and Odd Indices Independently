@@ -1,0 +1,33 @@
+func sortEvenOdd(nums []int) []int {
+    evens := []int{}
+    odds := []int{}
+
+    for i, v := range nums {
+        if i % 2 == 0 {
+            evens = append(evens, v)
+        }else {
+            odds = append(odds, v)
+        }
+    }
+
+    evenIdx := 0
+    oddIdx := 0
+
+    // sort
+    slices.Sort(evens)
+
+    slices.Sort(odds)
+    slices.Reverse(odds)
+
+    for i, _ := range nums {
+        if i % 2 == 0 {
+            nums[i] = evens[evenIdx]
+            evenIdx++
+        }else {
+            nums[i] = odds[oddIdx]
+            oddIdx++
+        }
+    }
+
+    return nums
+}

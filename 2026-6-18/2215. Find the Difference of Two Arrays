@@ -1,0 +1,30 @@
+func findDifference(nums1 []int, nums2 []int) [][]int {
+    map1 := make(map[int]bool)
+    map2 := make(map[int]bool)
+
+    ans1 := []int{}
+    ans2 := []int{}
+    // đưa các phần từ vào trong hashmap với giá trị là true
+    for _, v := range nums1 {
+        map1[v] = true
+    }
+
+    for _, v := range nums2 {
+        map2[v] = true
+    }
+    // sử dụng danh sách hashmap đã làm ở trên để check trạng thái có tồn tại chưa
+    for _, v := range nums1 {
+        if !map2[v] {
+            ans1 = append(ans1, v)
+            map2[v] = true // sau khi thêm vào mảng các số không trùng nhau rồi thì đổi thành true để chuyển thành trạng thái có rồi và không bị lặp khi có phần tử giống
+        }
+    }
+
+    for _, v := range nums2 {
+        if !map1[v] {
+            ans2 = append(ans2, v)
+            map1[v] = true
+        }
+    }
+    return [][]int{ans1, ans2}
+}

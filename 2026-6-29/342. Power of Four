@@ -1,0 +1,6 @@
+func isPowerOfFour(n int) bool {
+    // 1. n phải lớn hơn 0
+    // 2. n phải là lũy thừa của 2: (n & (n-1)) == 0
+    // 3. Số 1 phải nằm ở vị trí chẵn: (n & 0x55555555) != 0
+    return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0
+}

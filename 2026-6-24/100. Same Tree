@@ -1,0 +1,27 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func isSameTree(p *TreeNode, q *TreeNode) bool {
+    // lọc lớp 1 nếu cả 2 cây đều rỗng thì true
+    if p == nil && q == nil {
+        return true
+    }
+
+    // lọc lớp 2 nếu 1 trong 2 cây rỗng thì false
+    if p == nil || q == nil {
+        return false
+    }
+
+    // lọc lớp 3 nếu kết quả tại 1 node của 2 cây khác nhau thì false
+    if p.Val != q.Val {
+        return false
+    }
+
+    // Tiếp tục đệ quy và so sánh tại mỗi nhánh của cây có bằng nhau k
+    return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+}

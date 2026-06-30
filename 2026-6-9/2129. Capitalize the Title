@@ -1,0 +1,19 @@
+import (
+    "strings"
+)
+func capitalizeTitle(title string) string {
+    convertToLower := strings.ToLower(title)
+    arrayOfString := strings.Fields(convertToLower)
+    for i:=0;i<len(arrayOfString);i++{
+        if len(arrayOfString[i]) > 2{
+            arrayOfString[i] = strings.ToUpper(arrayOfString[i][0:1])  + arrayOfString[i][1:]
+        }
+    }
+
+    return strings.Join(arrayOfString, " ")
+}
+
+// Chuyển hết string về dạng viết thường sau đó tách các từ thành riêng lẻ và đưa vào mảng
+// sao đó loop qua và in hoa chữ cái đầu của mỗi từ lên
+// nếu từ bé hơn hoặc bằng 2 ký tự thì viết hoa hết
+// sau đó dùng strings.Join để ghép lại thành 1 chuỗi và trả về kết quả

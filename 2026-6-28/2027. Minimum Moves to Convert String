@@ -1,0 +1,18 @@
+func minimumMoves(s string) int {
+    moves := 0
+    i := 0
+    n := len(s)
+
+    for i < n {
+        // Nếu gặp 'X', tốn 1 bước và nhảy cóc qua 3 ô
+        if s[i] == 'X' {
+            moves++
+            i += 3
+        } else {
+            // Nếu gặp 'O', chỉ cần tiến lên 1 ô
+            i++
+        }
+    }
+
+    return moves
+}

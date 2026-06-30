@@ -1,0 +1,28 @@
+func reversePrefix(word string, ch byte) string {
+    targetIdx := -1
+
+    for i := 0; i < len(word); i++ {
+        if word[i] == ch {
+            targetIdx = i
+            break
+        }
+    }
+
+    if targetIdx == -1 {
+        return word
+    }
+
+    // bắt đầu reverse prefix từ 0 cho đến exists
+
+    bytes := []byte(word)
+    left := 0
+    right := targetIdx
+
+    for left < right {
+        bytes[left], bytes[right] = bytes[right], bytes[left]
+        left++
+        right--
+    }
+
+    return string(bytes)
+}

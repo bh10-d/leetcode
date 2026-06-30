@@ -1,0 +1,34 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func increasingBST(root *TreeNode) *TreeNode {
+    dummy := &TreeNode{}
+    curr := dummy
+
+    traverse(root, &curr)
+
+    return dummy.Right
+}
+
+func traverse(node *TreeNode, curr **TreeNode) {
+    if node == nil {
+        return
+    }
+
+    traverse(node.Left, curr)
+
+    nextRight := node.Right
+
+    node.Left = nil
+
+    (*curr).Right = node
+
+    *curr = node
+
+    traverse(nextRight, curr)
+}

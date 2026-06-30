@@ -1,0 +1,26 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func invertTree(root *TreeNode) *TreeNode {
+    // dùng chính hàm này đệ quy luôn
+    // nếu leaf chạm đến đáy hoặc k có gì để đảo trả về nil
+    if root == nil {
+        return nil
+    }
+
+    // bước đảo đầu tiên là đảo nội bên trong 1 nhánh (cụ thể là đảo trong nhánh bên trái và đảo bên trong nhánh bên phải)
+    leftInverted := invertTree(root.Left)
+    rightInverted := invertTree(root.Right)
+
+    // sau khi đảo nội trong nhánh thì tiến hành bước tiếp theo là đổi nhánh của Left sang Right và của Right sang Left
+    root.Left = rightInverted
+    root.Right = leftInverted
+
+    // trả về lại luôn root gốc
+    return root
+}

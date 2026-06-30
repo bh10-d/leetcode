@@ -1,0 +1,28 @@
+func mySqrt(x int) int {
+    if x < 2 {
+        return x
+    }
+
+    left := 0
+    right := x
+
+    ans := 0
+
+    for left <= right {
+        mid := (left+right)/2
+
+        square := int64(mid) * int64(mid)
+        target := int64(x)
+
+        if square == target {
+            return mid
+        }else if square < target {
+            ans = mid // số này hợp lệ cất tạm
+            left = mid + 1 // tiếp tục dịch lên để kiểm tra xem còn số nào hợp hơn không
+        }else {
+            right = mid - 1
+        }
+    }
+
+    return ans
+}

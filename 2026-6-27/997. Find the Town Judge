@@ -1,0 +1,22 @@
+func findJudge(n int, trust [][]int) int {
+    // tạo mảng chứa điểm niềm tin
+    trustScores := make([]int, n+1)
+
+    // duyệt qua danh sách tin tưởng
+    for _, relation := range trust {
+        p1 := relation[0] // người đi tin tưởng
+        p2 := relation[1] // người được tin tưởng
+
+        trustScores[p1]-- // người p1 mất điểm
+        trustScores[p2]++ // người p2 được điểm
+    }
+
+    // tìm xem ai được n-1 điểm
+    for i := 1; i <= n; i++ {
+        if trustScores[i] == n-1 {
+            return i
+        }
+    }
+
+    return -1
+}

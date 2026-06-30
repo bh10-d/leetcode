@@ -1,0 +1,24 @@
+func isHappy(n int) bool {
+    // Dùng map như một Set để lưu các số đã từng xuất hiện
+    seen := make(map[int]bool)
+    
+    // Vòng lặp chạy đến khi n bằng 1 (thành công) hoặc n bị trùng (vòng lặp vô hạn)
+    for n != 1 && !seen[n] {
+        seen[n] = true
+        n = getNext(n) // Tính tổng bình phương các chữ số tiếp theo
+    }
+    
+    // Nếu thoát vòng lặp vì n == 1 thì trả về true, ngược lại trả về false
+    return n == 1
+}
+
+// Hàm phụ để tính tổng bình phương các chữ số
+func getNext(n int) int {
+    sum := 0
+    for n > 0 {
+        digit := n % 10
+        sum += digit * digit
+        n /= 10
+    }
+    return sum
+}

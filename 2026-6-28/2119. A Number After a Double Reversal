@@ -1,0 +1,4 @@
+func isSameAfterReversals(num int) bool {
+    // Trả về true nếu num bằng 0 HOẶC num không tận cùng bằng số 0
+    return num == 0 || num % 10 != 0
+}

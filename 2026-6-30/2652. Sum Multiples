@@ -1,0 +1,13 @@
+func sumOfMultiples(n int) int {
+    sum := 0
+    
+    // Duyệt qua tất cả các số từ 1 đến n
+    for i := 1; i <= n; i++ {
+        // Nếu chia hết cho 3, hoặc 5, hoặc 7 thì cộng vào tổng
+        if i%3 == 0 || i%5 == 0 || i%7 == 0 {
+            sum += i
+        }
+    }
+    
+    return sum
+}

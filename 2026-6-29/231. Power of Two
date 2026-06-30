@@ -1,0 +1,4 @@
+func isPowerOfTwo(n int) bool {
+    // Số phải lớn hơn 0 và thỏa mãn phép toán bit ma thuật
+    return n > 0 && (n & (n - 1)) == 0
+}

@@ -1,0 +1,25 @@
+func digitSum(s string, k int) string {
+    // Vòng lặp chạy chừng nào độ dài của s còn lớn hơn k
+    for len(s) > k {
+        var nextStr string
+        
+        // Duyệt qua chuỗi theo từng cụm có độ dài k
+        for i := 0; i < len(s); i += k {
+            sum := 0
+            
+            // Tính tổng các chữ số trong cụm hiện tại
+            // Phải đảm bảo j không vượt quá độ dài chuỗi (len(s))
+            for j := i; j < i+k && j < len(s); j++ {
+                sum += int(s[j] - '0')
+            }
+            
+            // Đổi tổng vừa tính thành chuỗi rồi nối tiếp vào chuỗi mới
+            nextStr += strconv.Itoa(sum)
+        }
+        
+        // Cập nhật s bằng chuỗi mới vừa tạo ra sau 1 lượt biến đổi
+        s = nextStr
+    }
+    
+    return s
+}

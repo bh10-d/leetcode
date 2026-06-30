@@ -1,0 +1,4 @@
+func checkPerfectNumber(num int) bool {
+    // Chỉ cần kiểm tra xem num có phải là 1 trong 5 số hoàn hảo duy nhất của hệ số 32-bit không
+    return num == 6 || num == 28 || num == 496 || num == 8128 || num == 33550336
+}

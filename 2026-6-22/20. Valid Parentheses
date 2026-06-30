@@ -1,0 +1,22 @@
+func isValid(s string) bool {
+    stack := []byte{}
+
+    for i := 0; i < len(s); i++ {
+        v := s[i]
+        // check nếu là ngoặc mở thì thêm luôn ngoặc đóng vào stack
+        if v == '(' {
+            stack = append(stack, ')')
+        }else if v == '{' {
+            stack = append(stack, '}')
+        }else if v == '[' {
+            stack = append(stack, ']')
+        }else {
+            // ở các trường hợp trên thì check trường hợp ngoặc mở nếu trường hợp ngoặc đóng thì check xuống đây
+            if len(stack) > 0 && v != stack[len(stack)-1] {
+                return false
+            }
+            stack = stack[:len(stack)-1]
+        }
+    }
+    return len(stack) == 0
+}

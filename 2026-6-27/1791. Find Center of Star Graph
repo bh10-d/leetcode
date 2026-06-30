@@ -1,0 +1,8 @@
+func findCenter(edges [][]int) int {
+    // Nếu đỉnh đầu tiên của cạnh 1 xuất hiện ở cạnh 2 -> Nó là tâm
+    if edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1] {
+        return edges[0][0]
+    }
+    // Ngược lại thì đỉnh thứ hai của cạnh 1 chắc chắn là tâm
+    return edges[0][1]
+}

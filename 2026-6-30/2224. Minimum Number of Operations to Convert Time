@@ -1,0 +1,20 @@
+func convertTime(current string, correct string) int {
+    diff := toMin(correct) - toMin(current)
+    ops := 0
+    
+    // Sử dụng mảng các bước thao tác (Greedy)
+    steps := []int{60, 15, 5, 1}
+    for _, step := range steps {
+        ops += diff / step // Số lần dùng bước này
+        diff %= step       // Phần dư còn lại
+    }
+    
+    return ops
+}
+
+// Hàm phụ chuyển "HH:MM" thành tổng số phút
+func toMin(time string) int {
+    var h, m int
+    fmt.Sscanf(time, "%d:%d", &h, &m)
+    return h*60 + m
+}

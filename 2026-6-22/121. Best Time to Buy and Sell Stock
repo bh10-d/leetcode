@@ -1,0 +1,15 @@
+func maxProfit(prices []int) int {
+    minProfit := prices[0]
+    maxProfit := 0
+
+    for i := 1; i < len(prices); i++ {
+        if prices[i] < minProfit {
+            minProfit = prices[i]
+        }
+        if maxProfit < (prices[i] - minProfit) {
+            maxProfit = (prices[i] - minProfit)
+        }
+    }
+
+    return maxProfit
+}

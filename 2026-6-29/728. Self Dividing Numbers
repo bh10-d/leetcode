@@ -1,0 +1,25 @@
+func selfDividingNumbers(left int, right int) []int {
+    var result []int
+
+    for i := left; i <= right; i++ {
+        if isSelfDividing(i) {
+            result = append(result, i)
+        }
+    }
+
+    return result
+}
+
+// Hàm phụ kiểm tra xem một số có phải số tự chia hết hay không
+func isSelfDividing(num int) bool {
+    temp := num
+    for temp > 0 {
+        digit := temp % 10
+        // Nếu chứa số 0 hoặc số ban đầu không chia hết cho chữ số này -> Sai
+        if digit == 0 || num % digit != 0 {
+            return false
+        }
+        temp /= 10
+    }
+    return true
+}

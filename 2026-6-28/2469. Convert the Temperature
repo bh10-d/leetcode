@@ -1,0 +1,8 @@
+func convertTemperature(celsius float64) []float64 {
+    // Tính độ Kelvin và độ Fahrenheit theo đúng công thức
+    kelvin := celsius + 273.15
+    fahrenheit := celsius * 1.80 + 32.0
+    
+    // Trả về mảng chứa 2 giá trị vừa tính
+    return []float64{kelvin, fahrenheit}
+}

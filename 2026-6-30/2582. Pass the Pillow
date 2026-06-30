@@ -1,0 +1,15 @@
+func passThePillow(n int, time int) int {
+    // Thời gian để đi hết một lượt từ đầu này sang đầu kia
+    round := n - 1
+    
+    fullRounds := time / round
+    extraTime := time % round
+    
+    // Nếu số lượt hoàn thành là chẵn -> Gối đang đi xuôi từ 1 đến n
+    if fullRounds % 2 == 0 {
+        return 1 + extraTime
+    }
+    
+    // Nếu số lượt hoàn thành là lẻ -> Gối đang đi ngược từ n về 1
+    return n - extraTime
+}

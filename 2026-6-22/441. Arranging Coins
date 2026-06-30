@@ -1,0 +1,23 @@
+func arrangeCoins(n int) int {
+    left := 1
+    right := n
+    ans := 0
+
+    for left <= right {
+        mid := (left+right)/2
+
+        needCoins := (int64(mid) * (int64(mid)+1))/2 // tìm số xu cần thiết đến hàng mid bằng công thức (k * (k+1))/2  vì 1 + 2 + 3 + 4 + ... + k
+        target := int64(n)
+
+        if needCoins == target {
+            return mid
+        }else if needCoins < target {
+            ans = mid
+            left = mid + 1 // thử tìm xem có được nhiều hàng hơn không
+        }else {
+            right = mid - 1 // quá số xu phải ép bên phải xuống
+        }
+    }
+
+    return ans
+}

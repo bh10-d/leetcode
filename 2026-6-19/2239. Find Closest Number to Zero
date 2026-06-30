@@ -1,0 +1,24 @@
+func findClosestNumber(nums []int) int {
+    closest := nums[0]
+
+    for _, v := range nums {
+        // chuẩn hóa lại khoảng cách vì khoảng cách k có khoảng cách âm
+        distV := v
+        if distV < 0 { distV = -distV }
+
+        distClosest := closest
+        if distClosest < 0 { distClosest = -distClosest}
+
+        // điều kiện đầu tiên khoảng cách k có bằng nhau
+        if distV < distClosest {
+            closest = v
+        }
+
+        // điều kiện thứ hai nếu khoảng cách bằng nhau thì kiểm tra giá trị nào lớn hơn
+        if distV == distClosest && v > closest {
+            closest = v
+        }
+    }
+
+    return closest
+}

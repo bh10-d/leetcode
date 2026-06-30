@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func sumOfLeftLeaves(root *TreeNode) int {
+    if root == nil || (root.Left == nil && root.Right == nil) {
+        return 0
+    }
+    
+    sum := 0
+
+    traverse(root, &sum)
+
+    return sum
+}
+
+func traverse(node * TreeNode, sum *int) {
+    if node == nil {
+        return
+    }
+
+    // đứng từ cha check xuống node (node là leaf mà k có các node con)
+    if node.Left != nil && node.Left.Left == nil && node.Left.Right == nil {
+        *sum += node.Left.Val
+    }
+
+    traverse(node.Left, sum)
+    traverse(node.Right, sum)
+}

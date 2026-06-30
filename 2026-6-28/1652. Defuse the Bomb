@@ -1,0 +1,28 @@
+func decrypt(code []int, k int) []int {
+    n := len(code)
+    result := make([]int, n)
+    
+    // Trường hợp 1: k = 0, trả về mảng toàn số 0 (Go mặc định make đã là 0 rồi)
+    if k == 0 {
+        return result
+    }
+    
+    for i := 0; i < n; i++ {
+        sum := 0
+        if k > 0 {
+            // Trường hợp 2: k > 0, cộng k số phía sau
+            for j := 1; j <= k; j++ {
+                sum += code[(i+j)%n]
+            }
+        } else {
+            // Trường hợp 3: k < 0, cộng |k| số phía trước
+            // Sử dụng -k để lấy giá trị dương
+            for j := 1; j <= -k; j++ {
+                sum += code[(i-j+n)%n] // Cộng thêm n để tránh chỉ số bị âm
+            }
+        }
+        result[i] = sum
+    }
+    
+    return result
+}

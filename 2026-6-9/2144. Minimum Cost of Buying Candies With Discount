@@ -1,0 +1,26 @@
+// Bài này thì mua nến và được miễn phí 1 cái
+// ví dụ có 3 cây nến với giá là 1 2 3 thì khi mà mua 2 cây có giá là 2 và 3 tiền
+// thì sẽ được miễn phí 1 cây nến với giá bé hơn hoặc bằng với cây có giá thấp nhất khi mua
+// và cây được free thì sẽ k có tính tiền và chỉ tính tiền 2 cây kia thôi thì sẽ là 2+3 là 5
+
+
+import (
+    "slices"
+)
+func minimumCost(cost []int) int {
+    slices.Sort(cost)
+
+    totalCost := 0
+    count := 0 
+
+    for i := len(cost) - 1; i >=0; i-- {
+        count++
+        if count == 3 {
+            count = 0
+        }else {
+            totalCost += cost[i]
+        }
+    }
+
+    return totalCost
+}

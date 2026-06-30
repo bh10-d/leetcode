@@ -1,0 +1,4 @@
+func isPowerOfThree(n int) bool {
+    // n phải lớn hơn 0 và là ước của 3^19
+    return n > 0 && 1162261467%n == 0
+}

@@ -1,0 +1,16 @@
+func countEven(num int) int {
+    count := 0
+    for i := 1; i <= num; i++ {
+        sumOfDigits := 0
+        temp := i
+
+        for temp > 0 {
+            sumOfDigits += temp%10
+            temp = temp/10
+        }
+        if sumOfDigits % 2 == 0 {
+            count++
+        }
+    }
+    return count
+}

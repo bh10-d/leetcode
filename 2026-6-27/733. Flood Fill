@@ -1,0 +1,35 @@
+func floodFill(image [][]int, sr int, sc int, color int) [][]int {
+    // Lấy ra màu gốc tại ô bắt đầu
+    startColor := image[sr][sc]
+    
+    // Nếu màu mới trùng màu cũ thì không cần tô, trả về luôn
+    if startColor == color {
+        return image
+    }
+    
+    // Gọi hàm DFS để loang màu
+    dfs(image, sr, sc, startColor, color)
+    
+    return image
+}
+
+func dfs(image [][]int, r, c, startColor, newColor int) {
+    // 1. Trạm gác biên: Kiểm tra xem có bị văng ra khỏi ma trận không
+    if r < 0 || r >= len(image) || c < 0 || c >= len(image[0]) {
+        return
+    }
+    
+    // 2. Nếu ô hiện tại không cùng màu gốc, bỏ qua không tô
+    if image[r][c] != startColor {
+        return
+    }
+    
+    // 3. Tô màu mới cho ô hiện tại
+    image[r][c] = newColor
+    
+    // 4. Lan ra 4 hướng: Dưới, Trên, Phải, Trái
+    dfs(image, r+1, c, startColor, newColor)
+    dfs(image, r-1, c, startColor, newColor)
+    dfs(image, r, c+1, startColor, newColor)
+    dfs(image, r, c-1, startColor, newColor)
+}

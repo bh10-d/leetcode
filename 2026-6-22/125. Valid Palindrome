@@ -1,0 +1,28 @@
+import (
+    "unicode"
+)
+func isPalindrome(s string) bool {
+    clean := []rune{}
+
+    for _, ch := range s {
+        chLower := unicode.ToLower(ch)
+        // lọc lại các trường hợp là chữ thường và 0 - 9 và thêm vào mảng clean mới
+        if (chLower >= 'a' && chLower <= 'z') || (chLower >= '0' && chLower <= '9') {
+            clean = append(clean, chLower)
+        }
+    }
+
+    left := 0
+    right := len(clean) - 1
+
+    for left < right {
+        // sử dụng 2 con trỏ chạy từ trái và từ phải để so sánh có giống nhau ở các ký tự k
+        if clean[left] != clean[right] {
+            return false
+        }
+        left++
+        right--
+    }
+
+    return true
+}

@@ -1,0 +1,42 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func binaryTreePaths(root *TreeNode) []string {
+    var res []string
+    if root == nil {
+        return res
+    }
+
+    traverse(root, "", &res)
+
+    return res
+}
+
+func traverse(node *TreeNode, path string, res *[]string) {
+    if node == nil {
+        return
+    }
+
+    // bước 1: thêm giá trị ban đầu và nhật ký hành trình
+    if path == "" {
+        path = strconv.Itoa(node.Val)
+    }else {
+        path = path + "->" + strconv.Itoa(node.Val)
+    }
+
+    // bước 2: kiểm tra xem thử có phải node hay k
+    if node.Left == nil && node.Right == nil {
+        *res = append(*res, path)
+        return
+    }
+
+    // bước 3: nếu như không phải thì tiếp tục đào sâu vào ghi nhật ký
+    traverse(node.Left, path, res)
+    traverse(node.Right, path, res)
+
+}

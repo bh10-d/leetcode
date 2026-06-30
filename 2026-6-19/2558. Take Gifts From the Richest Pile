@@ -1,0 +1,21 @@
+func pickGifts(gifts []int, k int) int64 {
+    total := 0
+    for i:=1; i <= k; i++ {
+        max := 0
+        idx := 0
+        // duyệt mảng mỗi một 1s của k để tìm ra max và mang đi căn bậc 2
+        for j, g := range gifts {
+            if max < g {
+                max = g
+                idx = j
+            }
+        }
+        gifts[idx] = int(math.Sqrt(float64(max)))
+    }
+
+    for _, v := range gifts {
+        total = total + v
+    }
+
+    return int64(total)
+}

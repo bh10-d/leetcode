@@ -1,0 +1,44 @@
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func findTarget(root *TreeNode, k int) bool {
+    var arr []int
+
+    // viết hàm để làm phẳng cây nhị phân thành mảng
+    inorder(root, &arr)
+
+    left := 0
+    right := len(arr) - 1
+
+    // sử dụng kỹ thuật 2 con trỏ để chạy ngược lại với nhau để tìm ra 2 số có tổng bằng k
+    for left < right {
+        sum := arr[left] + arr[right]
+        if sum == k {
+            return true
+        }
+
+        if sum < k {
+            left++
+        }else{
+            right--
+        }
+    }
+
+    return false
+
+}
+
+func inorder(node *TreeNode, arr *[]int) {
+    if node == nil {
+         return
+    }
+
+    inorder(node.Left, arr)
+    *arr = append(*arr, node.Val)
+    inorder(node.Right, arr)
+}
